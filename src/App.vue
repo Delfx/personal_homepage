@@ -1,7 +1,7 @@
 <template>
 
   <div class="presentation col-6">
-    <Presentation class="m-2 d-flex align-items-center" />
+    <Presentation class="d-flex align-items-center" />
   </div>
 
   <Renderer :pointer="{ intersectRecursive: true }" ref="rendererC" antialias
@@ -17,7 +17,7 @@
       <PointLight :position="{ z: -50, x: -50 }" color="white" :intensity="0.3" />
       <PointLight :position="{ z: 80, x: 80 }" color="white" :intensity="0.1" />
 
-      <GltfModel @click="onClick" :position="{ x: 1, y: 0.6, z: 1 }" :rotation="{ y: modelRotationY }" ref="model"
+      <GltfModel @click="onClick" :position="{ x: 1, y: 0.4, z: 1 }" :rotation="{ y: modelRotationY }" ref="model"
         src="/galva2.gltf">
       </GltfModel>
 
@@ -28,8 +28,10 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { Camera, PointLight, Renderer, Scene, AmbientLight, GltfModel, RendererPublicInterface } from 'troisjs'
+import { Camera, PointLight, Renderer, Scene, AmbientLight, GltfModel, RendererPublicInterface, } from 'troisjs'
 import Presentation from './components/Presentation.vue'
+import { LoadingManager } from 'three';
+// import { Scene } from 'three';
 
 
 const rendererC = ref()
@@ -48,6 +50,8 @@ const winSize = () => {
   }
 }
 
+
+
 //create random color generator
 const randomColor = () => {
   return '#' + Math.floor(Math.random() * 16777215).toString(16);
@@ -57,7 +61,7 @@ const winSizeCheck = () => {
   if (winSize().width <= 768) {
     model.value.position.z = 1.5
     model.value.position.x = 1.2
-    model.value.rotation.y = -0.7
+    model.value.rotation.y = -0.6
   }
 }
 
@@ -69,12 +73,64 @@ const onClick = (event: any) => {
   // modelRotationY.value += 0.2
 }
 
+const pageLoaded = () => {
+  if (document.readyState === 'complete') {
+
+    console.log('ready');
+
+
+  }
+}
+
+
+
+
+
 onMounted(() => {
   const renderer = rendererC.value as RendererPublicInterface
+
+
+  const scene = model.value as LoadingManager
+
+  // scene.onProgress = function (url, itemsLoaded, itemsTotal) {
+
+  //   console.log('Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.');
+
+  // };
+
+  scene.onLoad = function () {
+
+    console.log('Loading complete!');
+
+  };
+
+
+  // console.log(sceneC.value.scene.children.length);
+
+
+
+
+
   renderer.onBeforeRender(() => {
-    modelRotationY.value += 0.002
+
+    // pageLoaded();
+    // console.log(scene.children.length);
+    // console.log(sceneC.value.scene.children.length);
+
+    // pageLoaded();
+    // modelRotationY.value += 0.002
   })
 })
+
+
+//create function to check if page loaded
+
+
+
+
+//explain onMounted in vue 3
+
+
 
 
 </script>
@@ -86,7 +142,8 @@ html {
 }
 
 .presentation {
-  margin-top: 13  .5rem;
+  margin-left: 0.6rem;
+  margin-top: 13.5rem;
 }
 
 h1 {
