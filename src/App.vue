@@ -92,11 +92,17 @@ onMounted(() => {
 
   const scene = model.value as LoadingManager
 
-  // scene.onProgress = function (url, itemsLoaded, itemsTotal) {
+  scene.onProgress = function (url, itemsLoaded, itemsTotal) {
 
-  //   console.log('Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.');
+    console.log('Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.');
 
-  // };
+  };
+
+  scene.onError = function (url) {
+
+    console.log('There was an error loading ' + url);
+
+  };
 
   scene.onLoad = function () {
 
@@ -107,18 +113,21 @@ onMounted(() => {
 
   // console.log(sceneC.value.scene.children.length);
 
-
+  // convert modelRotationY 2 symbol after dot and covert to number
 
 
 
   renderer.onBeforeRender(() => {
+    if (Number(modelRotationY.value.toFixed(2)) == 6.29) {
+      modelRotationY.value = 0
+      modelRotationY.value += 0.002
+    } else if (Number(modelRotationY.value.toFixed(2)) < 4.38 && Number(modelRotationY.value.toFixed(2)) > 1.5) {
+      modelRotationY.value += 0.006
+    } else {
+      modelRotationY.value += 0.002
+    }
 
-    // pageLoaded();
-    // console.log(scene.children.length);
-    // console.log(sceneC.value.scene.children.length);
 
-    // pageLoaded();
-    // modelRotationY.value += 0.002
   })
 })
 
