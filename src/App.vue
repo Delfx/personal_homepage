@@ -48,6 +48,8 @@ const winSize = () => {
   }
 }
 
+//create to check if page loaded
+
 
 
 //create random color generator
@@ -84,17 +86,24 @@ const pageLoaded = () => {
 
 
 
+
+
+
+
+
+
+
 onMounted(() => {
+  let speed = 0.002
   const renderer = rendererC.value as RendererPublicInterface
-
-
   const scene = model.value as LoadingManager
 
-  // scene.onProgress = function (url, itemsLoaded, itemsTotal) {
+  scene.onProgress = function (url, itemsLoaded, itemsTotal) {
 
-  //   console.log('Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.');
+    console.log('Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.');
 
-  // };
+  };
+
 
   scene.onLoad = function () {
 
@@ -103,20 +112,39 @@ onMounted(() => {
   };
 
 
+  //create function gradually increace number from 0 to 6.28
+
+
+
+
+
+
+
   // console.log(sceneC.value.scene.children.length);
 
-
+  // convert modelRotationY 2 symbol after dot and covert to number
 
 
 
   renderer.onBeforeRender(() => {
+    if (Number(modelRotationY.value.toFixed(2)) == 6.29) {
+      modelRotationY.value = 0
+      modelRotationY.value += speed
+    } else if (Number(modelRotationY.value.toFixed(2)) < 4.38 && Number(modelRotationY.value.toFixed(2)) > 1.5) {
+      //gradually increase speed of rotation
+      if (speed < 0.006) {
+        speed += 0.0001
+      }
+      modelRotationY.value += speed
+    } else {
+      //gradually decrease speed of rotation
+      if (speed > 0.002) {
+        speed -= 0.0001
+      }
+      modelRotationY.value += speed
+    }
 
-    // pageLoaded();
-    // console.log(scene.children.length);
-    // console.log(sceneC.value.scene.children.length);
 
-    // pageLoaded();
-    // modelRotationY.value += 0.002
   })
 })
 
