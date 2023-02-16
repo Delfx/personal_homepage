@@ -1,7 +1,6 @@
 <template>
-
-  <div class="presentation col-6">
-    <Presentation class="d-flex align-items-center" />
+  <div class="presentation col-12 col-md-12 col-xl-9">
+    <Presentation class="" />
   </div>
 
   <Renderer :pointer="{ intersectRecursive: true }" ref="rendererC" antialias
@@ -17,13 +16,12 @@
       <PointLight :position="{ z: -50, x: -50 }" color="white" :intensity="0.3" />
       <PointLight :position="{ z: 80, x: 80 }" color="white" :intensity="0.1" />
 
-      <GltfModel @click="onClick" :position="{ x: 1, y: 0.4, z: 1 }" :rotation="{ y: modelRotationY }" ref="model"
-        src="/galva2.gltf">
+      <GltfModel @click="changeColorOnClick" :position="{ x: 1, y: 0.4, z: 1 }" :rotation="{ y: modelRotationY }"
+        ref="model" src="/galva2.gltf">
       </GltfModel>
 
     </Scene>
-  </Renderer>
-
+</Renderer>
 </template>
 
 <script setup lang="ts">
@@ -65,7 +63,7 @@ const winSizeCheck = () => {
   }
 }
 
-const onClick = (event: any) => {
+const changeColorOnClick = (event: any) => {
   // console.log(randomColor());
   lightColorRight.value = randomColor();
   lightColorLeft.value = randomColor();
@@ -138,8 +136,18 @@ onMounted(() => {
 <style>
 body,
 html {
-  margin: 0;
+  /* margin: 0; */
+  width: 70%;
 }
+
+
+@media screen and (max-width: 768px) {
+  body,
+  html {
+    width: 70%;
+  }
+}
+
 
 .presentation {
   margin-left: 0.6rem;
@@ -153,9 +161,9 @@ h1 {
 canvas {
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  z-index: -9999;
+  z-index: -1;
 }
 </style>
