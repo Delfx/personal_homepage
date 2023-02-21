@@ -1,20 +1,7 @@
 <template>
-
-
-    <h1 class="loading vh-100 d-flex align-items-center justify-content-center">
-      Loading...
-    </h1>
-
-
-
-
-
-
-
-
-
-
-
+  <h1 class="loading vh-100 d-flex align-items-center justify-content-center">
+    Loading...
+  </h1>
 
   <Transition v-if="show" name="fadePresentation" appear>
     <div class="presentation col-12 col-md-12 col-xl-9">
@@ -35,9 +22,11 @@
       <PointLight :position="{ z: -50, x: -50 }" color="white" :intensity="0.3" />
       <PointLight :position="{ z: 80, x: 80 }" color="white" :intensity="0.1" />
 
+
       <GltfModel @click="changeColorOnClick" :position="{ x: 1.3, y: 0.4, z: 1 }" :rotation="{ y: modelRotationY }"
         ref="model" src="/galva2.gltf">
       </GltfModel>
+
 
     </Scene>
 </Renderer>
@@ -48,8 +37,6 @@ import { ref, onMounted } from 'vue'
 import { Camera, PointLight, Renderer, Scene, AmbientLight, GltfModel, RendererPublicInterface, } from 'troisjs'
 import Presentation from './components/Presentation.vue'
 import { LoadingManager } from 'three';
-// import { Scene } from 'three';
-
 
 const rendererC = ref()
 const camera = ref()
@@ -60,19 +47,6 @@ const lightColorRight = ref('blue');
 const lightColorLeft = ref('red');
 const show = ref(false)
 
-
-const winSize = () => {
-  return {
-    width: window.innerWidth,
-    height: window.innerHeight
-  }
-}
-
-
-
-
-
-
 const randomColor = () => {
   return '#' + Math.floor(Math.random() * 16777215).toString(16);
 }
@@ -80,26 +54,6 @@ const randomColor = () => {
 const changeColorOnClick = (event: any) => {
   lightColorRight.value = randomColor();
   lightColorLeft.value = randomColor();
-  // modelRotationY.value = 5.5}
-}
-
-const opacityChange = () => {
-  let opacity = 0
-  const renderer = rendererC.value as RendererPublicInterface
-
-  renderer.onBeforeRender(() => {
-    if (opacity < 1) {
-      opacity += 0.01
-      console.log(opacity);
-
-    }
-  })
-}
-
-
-const onReady = () => {
-  console.log('ready');
-  // opacityChange()
 }
 
 
@@ -108,22 +62,28 @@ onMounted(() => {
   const renderer = rendererC.value as RendererPublicInterface
   const scene = model.value as LoadingManager
 
-
   scene.onLoad = function () {
 
     console.log('Loading complete!');
     show.value = true
-
     //modify css fade2 property new property opacity: 0
     const loading = document.querySelector('.loading')
     loading?.classList.add('fadeOut')
-    // create timeout to remove element from DOM
+
+
+    // created timeout to remove element from DOM
     setTimeout(() => {
       loading?.classList.add('d-none')
+
+
+      console.log(model.value.scene);
+      
+
     }, 400)
   };
 
   renderer.onBeforeRender(() => {
+
     if (Number(modelRotationY.value.toFixed(2)) == 6.29) {
       modelRotationY.value = 0
       modelRotationY.value += speed
@@ -140,6 +100,7 @@ onMounted(() => {
         speed -= 0.0001
       }
       modelRotationY.value += speed
+
     }
 
   })
@@ -154,7 +115,6 @@ html {
   width: 70%;
   /* height: 100%; */
 }
-
 
 @media screen and (max-width: 768px) {
 
@@ -184,7 +144,7 @@ canvas {
 
 .fadePresentation-enter-active,
 .fadePresentation-leave-active {
-  transition: opacity 2.5s ease;
+  transition: opacity 1.5s ease;
 }
 
 .fadePresentation-enter-from,

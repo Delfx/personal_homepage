@@ -6,7 +6,7 @@
 
     <div class="">
 
-        <h6>I am a highly skilled TV broadcast technician with a passion for programming. With 5 years of experience in
+        <h6 class="mt-3">I am a highly skilled TV broadcast technician with a passion for programming. With 5 years of experience in
             the
             field of broadcasting, I have a strong understanding of the technical aspects of television production. In
             addition to his expertise in traditional broadcast technology, I am currently self-taught in programming
