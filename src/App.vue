@@ -1,5 +1,5 @@
 <template>
-  <h1 class="loading vh-100 d-flex align-items-center justify-content-center">
+  <h1 class="loading loading-pulsing vh-100 d-flex align-items-center justify-content-center">
     Loading...
   </h1>
 
@@ -21,7 +21,6 @@
       <PointLight :position="{ z: 50, x: -80 }" :color="lightColorLeft" :intensity="0.6" />
       <PointLight :position="{ z: -50, x: -50 }" color="white" :intensity="0.3" />
       <PointLight :position="{ z: 80, x: 80 }" color="white" :intensity="0.1" />
-
 
       <GltfModel @click="changeColorOnClick" :position="{ x: 1.3, y: 0.4, z: 1 }" :rotation="{ y: modelRotationY }"
         ref="model" src="/galva2.gltf">
@@ -74,10 +73,8 @@ onMounted(() => {
     // created timeout to remove element from DOM
     setTimeout(() => {
       loading?.classList.add('d-none')
-
-
       console.log(model.value.scene);
-      
+
 
     }, 400)
   };
@@ -116,18 +113,30 @@ html {
   /* height: 100%; */
 }
 
-@media screen and (max-width: 768px) {
+
+@media only screen and (max-device-width: 480px) {
 
   body,
   html {
     width: 70%;
   }
+
+  .presentation {
+    margin-left: 0.6rem;
+    margin-top: 4.5rem;
+  }
 }
 
-.presentation {
-  margin-left: 0.6rem;
-  margin-top: 13.5rem;
+@media only screen and (min-device-width: 480px) {
+
+  .presentation {
+    margin-left: 0.6rem;
+    margin-top: 13.5rem;
+  }
 }
+
+
+
 
 h1 {
   z-index: 1;
@@ -162,15 +171,40 @@ canvas {
   opacity: 0;
 }
 
-/* create opacity animation on page load for fade2 class */
+
 
 .fadeOut {
   opacity: 0;
   animation: fadeOut 0.3s ease-in-out;
-  /* display: none; */
-  /* visibility: hidden; */
-
 }
+
+/* create pulsing animation */
+.loading-pulsing {
+  animation: loading-pulsing 1s ease-in-out infinite;
+}
+
+@keyframes loading-pulsing {
+  0% {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  75% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
 
 @keyframes fadeOut {
   0% {
