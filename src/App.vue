@@ -34,8 +34,8 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { Camera, PointLight, Renderer, Scene, AmbientLight, GltfModel, RendererPublicInterface, } from 'troisjs'
-import Presentation from './components/Presentation.vue'
 import { LoadingManager } from 'three';
+import Presentation from './components/Presentation.vue'
 
 const rendererC = ref()
 const camera = ref()
@@ -175,7 +175,7 @@ canvas {
 
 .fadeOut {
   opacity: 0;
-  animation: fadeOut 0.3s ease-in-out;
+  /* animation: fadeOut 0.3s ease-in-out; */
 }
 
 /* create pulsing animation */
