@@ -62,6 +62,18 @@
                 </div>
             </a>
         </div>
+
+        <div class="mt-1">
+
+            <a class="row text-decoration-none" href="https://www.linkedin.com/in/lukas-motiejūnas-5b097753"
+                target="_blank">
+
+                <div class="col-2 align-self-center">
+                    <h6 class="m-0 text-black">linkedin.com/lukasMotiejūnas</h6>
+                </div>
+
+            </a>
+        </div>
     </div>
 
     <h6 class="mt-3 fw-lighter fst-italic">*Click on my Head to change color</h6>
