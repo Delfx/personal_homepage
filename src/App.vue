@@ -9,8 +9,8 @@
     </div>
   </Transition>
 
-  <Renderer :pointer="{ intersectRecursive: true }" ref="rendererC" antialias
-    :orbit-ctrl="{ enableDamping: true, enabled: true }" resize="window">
+  <Renderer :pointer="{ intersectRecursive: true }" ref="rendererC" :antialias="true"
+    :orbit-ctrl="{ enableRotate: true, enableZoom: false }" resize="window">
 
     <Camera ref="camera" :position="{ z: 5, x: 1, y: 1 }" />
 
@@ -23,12 +23,12 @@
       <PointLight :position="{ z: 80, x: 80 }" color="white" :intensity="0.1" />
 
       <GltfModel @click="changeColorOnClick" :position="{ x: 1.3, y: 0.4, z: 1 }" :rotation="{ y: modelRotationY }"
-        ref="model" src="/galva2.gltf">
+        ref="model" src="head.gltf">
       </GltfModel>
 
 
     </Scene>
-</Renderer>
+  </Renderer>
 </template>
 
 <script setup lang="ts">
