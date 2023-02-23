@@ -130,8 +130,16 @@ html {
 
   .presentation {
     margin-left: 0.6rem;
-    margin-top: 13.5rem;
+    margin-top: 9.5rem;
   }
+}
+
+@media only screen and (min-device-width: 900px) {
+
+.presentation {
+  margin-left: 0.6rem;
+  margin-top: 10.5rem;
+}
 }
 
 
