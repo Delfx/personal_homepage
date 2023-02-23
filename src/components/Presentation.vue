@@ -16,7 +16,7 @@
     <div class="logo mt-3 col-md-5 col-12">
         <div>
             <a class="row text-decoration-none" href="https://github.com/Delfx" target="_blank">
-                <div class="col-md-2 col-3">
+                <div class="me-3 col-1">
                     <i style="font-size: 2rem;" class="bi bi-github text-black"></i>
                 </div>
 
@@ -27,7 +27,6 @@
         </div>
 
         <div class="mt-1">
-
             <div class="col-10 align-self-center">
                 <ul>
                     <a class="text-decoration-none" href="https://github.com/Delfx/personal_homepage" target="_blank">
@@ -57,7 +56,7 @@
         </div> -->
 
         <div class="mt-1 row">
-            <a class="col-md-2 col-3 text-decoration-none" href="mailto: home@lukmoti.lt" target="_blank">
+            <a class="me-3 col-1 text-decoration-none" href="mailto: home@lukmoti.lt" target="_blank">
                 <div class="">
                     <i style="font-size: 2rem;" class="bi bi-envelope text-black"></i>
                 </div>
@@ -71,7 +70,7 @@
         <div class="mt-1">
             <a class="row text-decoration-none" href="https://www.linkedin.com/in/lukas-motiejūnas-5b097753"
                 target="_blank">
-                <div class="col-md-2 col-3">
+                <div class="me-3 col-1">
                     <i style="font-size: 2rem;" class="bi bi-linkedin text-black"></i>
                 </div>
 
