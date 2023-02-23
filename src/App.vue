@@ -65,7 +65,6 @@ onMounted(() => {
 
     console.log('Loading complete!');
     show.value = true
-    //modify css fade2 property new property opacity: 0
     const loading = document.querySelector('.loading')
     loading?.classList.add('fadeOut')
 

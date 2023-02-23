@@ -27,6 +27,24 @@
         </div>
 
         <div class="mt-1">
+
+            <div class="col-10 align-self-center">
+                <ul>
+                    <a class="text-decoration-none" href="https://github.com/Delfx/personal_homepage" target="_blank">
+                        <li class="text-black">
+                            <h6 class="m-0 text-black fw-lighter fst-italic">home page source</h6>
+                        </li>
+                    </a>
+                    <a class="text-decoration-none" href="https://github.com/Delfx/laravel_quiz_generator" target="_blank">
+                        <li class="mt-2 text-black">
+                            <h6 class="m-0 text-black fw-lighter fst-italic">small Laravel + Vuejs project (Quiz generator)</h6>
+                        </li>
+                    </a>
+                </ul>
+            </div>
+        </div>
+
+        <!-- <div class="mt-1">
             <a class="row text-decoration-none" href="https://www.lukmoti.lt" target="_blank">
                 <div class="col-md-2 col-3">
                     <i style="font-size: 2rem;" class="bi bi-globe2 text-black"></i>
@@ -36,7 +54,7 @@
                     <h6 class="m-0 text-black">www.lukmoti.lt</h6>
                 </div>
             </a>
-        </div>
+        </div> -->
 
         <div class="mt-1 row">
             <a class="col-md-2 col-3 text-decoration-none" href="mailto: home@lukmoti.lt" target="_blank">
@@ -63,17 +81,7 @@
             </a>
         </div>
 
-        <div class="mt-1">
 
-            <a class="row text-decoration-none" href="https://www.linkedin.com/in/lukas-motiejūnas-5b097753"
-                target="_blank">
-
-                <div class="col-2 align-self-center">
-                    <h6 class="m-0 text-black">linkedin.com/lukasMotiejūnas</h6>
-                </div>
-
-            </a>
-        </div>
     </div>
 
     <h6 class="mt-3 fw-lighter fst-italic">*Click on my Head to change color</h6>
